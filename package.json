@@ -1,0 +1,22 @@
+{
+  "name": "discordie-fiddle",
+  "version": "1.0.0",
+  "description": "Simple discord bot for me and my friends",
+  "main": "bot.js",
+  "dependencies": {
+    "discord.js": "^11.2.1",
+    "mongodb": "^3.0.0-rc0"
+  },
+  "devDependencies": {
+    "babel-eslint": "^8.0.3",
+    "eslint": "^4.13.1",
+    "eslint-config-google": "^0.9.1",
+    "nodemon": "^1.14.3"
+  },
+  "scripts": {
+    "start": "node bot.js",
+    "dev": "./node_modules/.bin/nodemon bot.js"
+  },
+  "author": "IvanS1991",
+  "license": "ISC"
+}

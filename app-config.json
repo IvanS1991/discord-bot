@@ -1,0 +1,9 @@
+{
+  "BOT_NAME": "Kaka Filka",
+  "BOT_TOKEN": "MjkyMDI5MjY4MTEwNzM3NDA5.DR-9uw.tc-OVLzcHY5Me3GFByyIcJQwJII",
+  "DB_CONN_STR": "mongodb://admin:admin@ds131137.mlab.com:31137/kaka-filka-bot",
+  "COMMAND": {
+    "KEYWORD": "kako",
+    "SEPARATOR": "$"
+  }
+}
