@@ -5,6 +5,7 @@
   "main": "bot.js",
   "dependencies": {
     "discord.js": "^11.2.1",
+    "express": "^4.16.2",
     "mongodb": "^3.0.0-rc0"
   },
   "devDependencies": {

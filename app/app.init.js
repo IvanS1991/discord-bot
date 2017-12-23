@@ -1,4 +1,11 @@
+/* global process */
+
+const express = require('express');
+const app = express();
+
 const handler = require('./handler/');
+
+const { PORT } = require('../app-config');
 
 const init = (data) => {
   const controllers = require('./controllers')('data');
@@ -6,6 +13,12 @@ const init = (data) => {
   controllers.forEach((controller) => {
     handler.subscribe(controller.command, controller.handler);
   });
+
+  app.get('*', (req, res) => {
+    res.status(404).send('<h1>Kaka filka bot</h1>');
+  });
+
+  app.listen(process.env.PORT || PORT);
 };
 
 module.exports = { init };
