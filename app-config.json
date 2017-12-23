@@ -5,5 +5,36 @@
   "COMMAND": {
     "KEYWORD": "kako",
     "SEPARATOR": "$"
+  },
+  "SEARCH_CONFIG": {
+    "ANIME": {
+      "BASE_URL": "https://myanimelist.net/search/all?q=",
+      "LINK": {
+        "selector": ".information a",
+        "containedIn": "href"
+      },
+      "DATA": {
+        "img": {
+          "selector": ".js-scrollfix-bottom img",
+          "containedIn": "src"
+        },
+        "title": {
+          "selector": "h1 > span",
+          "containedIn": "innerHTML"
+        },
+        "score": {
+          "selector": ".stats-block > .score",
+          "containedIn": "innerHTML"
+        },
+        "description": {
+          "selector": "span[itemprop=\"description\"]",
+          "containedIn": "innerHTML"
+        },
+        "aired": {
+          "selector": ".season a",
+          "containedIn": "innerHTML"
+        }
+      }
+    }
   }
 }

@@ -8,7 +8,7 @@ const handler = require('./handler/');
 const { PORT } = require('../app-config');
 
 const init = (data) => {
-  const controllers = require('./controllers')('data');
+  const controllers = require('./controllers')(data);
 
   controllers.forEach((controller) => {
     handler.subscribe(controller.command, controller.handler);

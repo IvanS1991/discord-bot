@@ -1,5 +1,7 @@
 const init = (db) => {
-  return db;
+  return {
+    search: require('./search.data')(db),
+  };
 };
 
 module.exports = { init };

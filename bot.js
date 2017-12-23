@@ -16,7 +16,7 @@ require('./db').init(DB_CONN_STR)
     client.login(BOT_TOKEN);
 
     client.on('ready', () => {
-      console.log('Kaka filka up and running...');
+      console.log('Kaka filka duha plashta...');
     });
 
     client.on('message', handler.invoke);
