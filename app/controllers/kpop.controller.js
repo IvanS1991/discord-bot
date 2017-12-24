@@ -17,6 +17,9 @@ const wrapper = (command, data) => {
       data.kpopfap.update(count)
         .then((updatedCount) => {
           msg.reply(`Updated ${updatedCount} items in KPOPFAP DB`);
+        })
+        .catch((err) => {
+          console.log(err);
         });
     }
     return null;

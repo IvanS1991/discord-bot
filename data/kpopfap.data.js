@@ -25,24 +25,28 @@ const kpopfap = (db) => {
 
   const update = (pageCount) => {
     pageCount = pageCount || 100;
-    let output;
+    let output = [];
     const promises = [];
-    let after = 'none';
-    for (let i = 0; i < pageCount; i += 1) {
-      promises.push(fetch(createUrl(after, KPOPFAP_CONFIG.PER_PAGE))
-        .then((data) => {
-          return data.json();
-        })
-        .then((json) => {
-          after = json.after;
-          return json.data.children
-            .map((child) => child.data.url)
-            .filter((child) => child.includes(KPOPFAP_CONFIG.LOOK_FOR));
-        }));
-    }
-    return Promise.all(promises)
-      .then((values) => {
-        output = _(values)
+    const getPage = (after, counter) => {
+      if (counter < pageCount) {
+        return fetch(createUrl(after, KPOPFAP_CONFIG.PER_PAGE))
+          .then((data) => {
+            return data.json();
+          })
+          .then((json) => {
+            if (json.children && json.children.length === 0) {
+              return Promise.resolve();
+            }
+            output.push(json.data.children
+              .map((child) => child.data.url)
+              .filter((child) => child.includes(KPOPFAP_CONFIG.LOOK_FOR)));
+            return getPage(json.data.after, counter + 1);
+          });
+      }
+    };
+    return getPage('none', 0)
+      .then(() => {
+        return _(output)
           .flatten()
           .map((link, index) => {
             return {
@@ -50,10 +54,11 @@ const kpopfap = (db) => {
               id: index,
             };
           })
+          .uniqBy('link')
           .value();
-        return kpopfapDb.remove({});
       })
-      .then(() => {
+      .then((insertData) => {
+        output = insertData;
         return kpopfapDb.insert(output);
       })
       .then(() => {
