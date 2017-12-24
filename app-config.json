@@ -1,7 +1,9 @@
 {
   "BOT_NAME": "Kaka Filka",
   "BOT_TOKEN": "MjkyMDI5MjY4MTEwNzM3NDA5.DR-9uw.tc-OVLzcHY5Me3GFByyIcJQwJII",
+  "APP_ADMIN": "Haifischy",
   "DB_CONN_STR": "mongodb://admin:admin@ds131137.mlab.com:31137/kaka-filka-bot",
+  "DB_NAME": "kaka-filka-bot",
   "COMMAND": {
     "KEYWORD": "kako",
     "SEPARATOR": "$"
@@ -36,5 +38,16 @@
         }
       }
     }
+  },
+  "KPOPFAP_CONFIG": {
+    "PAGE_COUNT": 100,
+    "PER_PAGE": 25,
+    "LOOK_FOR": "gfycat",
+    "PARAMS": {
+      "RANDOM": "--random",
+      "UPDATE": "--update"
+    },
+    "BASE_URL": "https://www.reddit.com/r/kpopfap.json",
+    "DB_COLLECTION": "kpopfap"
   }
 }

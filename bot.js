@@ -1,17 +1,13 @@
 const Discord = require('discord.js');
 
 const handler = require('./app/handler/');
-const { BOT_TOKEN, DB_CONN_STR } = require('./app-config');
+const { BOT_TOKEN, DB_CONN_STR, DB_NAME } = require('./app-config');
 
 const client = new Discord.Client();
 
-require('./db').init(DB_CONN_STR)
-  .then((db) => {
-    return require('./data').init(db);
-  })
-  .then((data) => {
-    return require('./app').init(data);
-  })
+require('./db').init(DB_CONN_STR, DB_NAME)
+  .then((db) => require('./data').init(db))
+  .then((data) => require('./app').init(data))
   .then(() => {
     client.login(BOT_TOKEN);
 
