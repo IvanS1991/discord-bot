@@ -59,6 +59,9 @@ const kpopfap = (db) => {
       })
       .then((insertData) => {
         output = insertData;
+        return kpopfapDb.remove({});
+      })
+      .then(() => {
         return kpopfapDb.insert(output);
       })
       .then(() => {
