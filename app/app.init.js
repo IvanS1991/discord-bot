@@ -2,6 +2,7 @@
 
 const express = require('express');
 const app = express();
+const http = require('http');
 
 const handler = require('./handler/');
 
@@ -19,6 +20,10 @@ const init = (data) => {
   });
 
   app.listen(process.env.PORT || PORT);
+
+  setInterval(() => {
+    http.get('http://kaka-filka-bot.herokuapp.com');
+  }, 60000);
 };
 
 module.exports = { init };
