@@ -4,7 +4,7 @@ const wrapper = (command, data) => {
   const handler = (msg, args) => {
     const param = args[0];
     const count = parseInt(args[1], 10);
-    if (param === KPOPFAP_CONFIG.PARAMS.RANDOM) {
+    if (param === KPOPFAP_CONFIG.PARAMS.RANDOM || !param) {
       data.kpopfap.random()
         .then((match) => {
           msg.reply(match.link);
