@@ -40,7 +40,6 @@
     }
   },
   "KPOPFAP_CONFIG": {
-    "PAGE_COUNT": 100,
     "PER_PAGE": 25,
     "LOOK_FOR": "gfycat",
     "PARAMS": {

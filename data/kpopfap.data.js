@@ -23,11 +23,12 @@ const kpopfap = (db) => {
       });
   };
 
-  const update = () => {
+  const update = (pageCount) => {
+    pageCount = pageCount || 100;
     let output;
     const promises = [];
     let after = 'none';
-    for (let i = 0; i < KPOPFAP_CONFIG.PAGE_COUNT; i += 1) {
+    for (let i = 0; i < pageCount; i += 1) {
       promises.push(fetch(createUrl(after, KPOPFAP_CONFIG.PER_PAGE))
         .then((data) => {
           return data.json();
