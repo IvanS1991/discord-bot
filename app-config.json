@@ -9,32 +9,50 @@
     "SEPARATOR": "$"
   },
   "SEARCH_CONFIG": {
-    "ANIME": {
-      "BASE_URL": "https://myanimelist.net/search/all?q=",
-      "LINK": {
-        "selector": ".information a",
-        "containedIn": "href"
+    "MAL": {
+      "BASE_URL": "https://myanimelist.net",
+      "ANIME": {
+        "LINK": {
+          "selector": "a.hoverinfo_trigger",
+          "containedIn": "href"
+        },
+        "DATA": {
+          "img": {
+            "selector": ".js-scrollfix-bottom img",
+            "containedIn": "src"
+          },
+          "title": {
+            "selector": "h1 > span",
+            "containedIn": "innerHTML"
+          },
+          "score": {
+            "selector": ".stats-block > .score",
+            "containedIn": "innerHTML"
+          },
+          "description": {
+            "selector": "span[itemprop=\"description\"]",
+            "containedIn": "innerHTML"
+          },
+          "aired": {
+            "selector": ".season a",
+            "containedIn": "innerHTML"
+          }
+        }
       },
-      "DATA": {
-        "img": {
-          "selector": ".js-scrollfix-bottom img",
-          "containedIn": "src"
+      "CHARACTER": {
+        "LINK": {
+          "selector": ".borderClass > a",
+          "containedIn": "href"
         },
-        "title": {
-          "selector": "h1 > span",
-          "containedIn": "innerHTML"
-        },
-        "score": {
-          "selector": ".stats-block > .score",
-          "containedIn": "innerHTML"
-        },
-        "description": {
-          "selector": "span[itemprop=\"description\"]",
-          "containedIn": "innerHTML"
-        },
-        "aired": {
-          "selector": ".season a",
-          "containedIn": "innerHTML"
+        "DATA": {
+          "img": {
+            "selector": "tbody > tr > td > div > a > img",
+            "containedIn": "src"
+          },
+          "title": {
+            "selector": "h1.h1",
+            "containedIn": "innerHTML"
+          }
         }
       }
     }

@@ -14,6 +14,17 @@ const anime = (animeData) => {
   return { embed };
 };
 
+const aniChar = (aniCharData) => {
+  const embed = new Discord.RichEmbed()
+    .setTitle(aniCharData.title)
+    .setColor(0x00AE86)
+    .setURL(aniCharData.link)
+    .setImage(aniCharData.img);
+
+  return { embed };
+};
+
 module.exports = {
   anime,
+  aniChar,
 };

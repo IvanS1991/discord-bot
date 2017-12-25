@@ -3,8 +3,8 @@ const { embed } = require('../../utils');
 const wrapper = (command, data) => {
   const handler = (msg, args) => {
     const query = encodeURI(args.join(' '));
-    data.search.malSearch('anime', query)
-      .then((animeData) => msg.channel.send(embed.anime(animeData)))
+    data.search.malSearch('character', query)
+      .then((aniCharData) => msg.channel.send(embed.aniChar(aniCharData)))
       .catch((err) => console.log(err));
   };
 

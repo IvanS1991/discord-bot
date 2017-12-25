@@ -1,40 +1,36 @@
 const fetch = require('node-fetch');
-const { parseHtml } = require('../utils/');
+const { parseHtml, parseUrl } = require('../utils/');
 const { SEARCH_CONFIG } = require('../app-config');
 
 const searchData = (db) => {
-  const anime = (query) => {
-    const url = `${SEARCH_CONFIG.ANIME.BASE_URL}${query}`;
+  const malSearch = (type, query) => {
+    const types = ['anime', 'manga', 'character'];
+    if (types.indexOf(type) === -1) {
+      throw new Error('wrong type');
+    }
+    const config = SEARCH_CONFIG.MAL[type.toUpperCase()];
+    const baseUrl = SEARCH_CONFIG.MAL.BASE_URL;
+    const url = `${baseUrl}/${type}.php?q=${query}`;
     let animeLink;
     return fetch(url)
-      .then((data) => {
-        return data.text();
-      })
-      .then((html) => {
-        return parseHtml(html);
-      })
-      .then((dom) => {
-        return dom.toLink(SEARCH_CONFIG.ANIME.LINK);
-      })
+      .then((data) => data.text())
+      .then((html) => parseHtml(html))
+      .then((dom) => dom.toLink(config.LINK))
       .then((link) => {
-        animeLink = link;
-        return fetch(link);
+        animeLink = parseUrl(link, baseUrl);
+        return fetch(animeLink);
       })
-      .then((data) => {
-        return data.text();
-      })
-      .then((html) => {
-        return parseHtml(html);
-      })
+      .then((data) => data.text())
+      .then((html) => parseHtml(html))
       .then((dom) => {
-        const animeData = dom.toData(SEARCH_CONFIG.ANIME.DATA);
+        const animeData = dom.toData(config.DATA);
         animeData.link = animeLink;
         return animeData;
       });
   };
 
   return {
-    anime,
+    malSearch,
   };
 };
 

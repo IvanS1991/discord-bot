@@ -26,13 +26,10 @@ const kpopfap = (db) => {
   const update = (pageCount) => {
     pageCount = pageCount || 100;
     let output = [];
-    const promises = [];
     const getPage = (after, counter) => {
       if (counter < pageCount) {
         return fetch(createUrl(after, KPOPFAP_CONFIG.PER_PAGE))
-          .then((data) => {
-            return data.json();
-          })
+          .then((data) => data.json())
           .then((json) => {
             if (json.children && json.children.length === 0) {
               return Promise.resolve();
@@ -61,12 +58,8 @@ const kpopfap = (db) => {
         output = insertData;
         return kpopfapDb.remove({});
       })
-      .then(() => {
-        return kpopfapDb.insert(output);
-      })
-      .then(() => {
-        return output.length;
-      });
+      .then(() => kpopfapDb.insert(output))
+      .then(() => output.length);
   };
 
   return {
