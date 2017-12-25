@@ -5,7 +5,7 @@ const wrapper = (command, data) => {
     const query = encodeURI(args.join(' '));
     data.search.malSearch('character', query)
       .then((aniCharData) => msg.channel.send(embed.aniChar(aniCharData)))
-      .catch((err) => console.log(err));
+      .catch((err) => msg.reply(err.message));
   };
 
   return {

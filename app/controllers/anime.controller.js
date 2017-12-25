@@ -5,7 +5,7 @@ const wrapper = (command, data) => {
     const query = encodeURI(args.join(' '));
     data.search.malSearch('anime', query)
       .then((animeData) => msg.channel.send(embed.anime(animeData)))
-      .catch((err) => console.log(err));
+      .catch((err) => msg.reply(err.message));
   };
 
   return {
