@@ -66,5 +66,48 @@
     },
     "BASE_URL": "https://www.reddit.com/r/kpopfap.json",
     "DB_COLLECTION": "kpopfap"
+  },
+  "SINOPTIK_CONFIG": {
+    "URL": {
+      "SOFIA": "https://www.sinoptik.bg/sofia-bulgaria-100727011/5-days"
+    },
+    "DATA": {
+      "city": {
+        "selector": ".currentCity",
+        "containedIn": "innerHTML"
+      },
+      "img": {
+        "selector": ".wf5dayRight .wf5dayRightImg",
+        "containedIn": "src"
+      },
+      "date": {
+        "selector": ".wf5dayRight .wf5dayRightDate",
+        "containedIn": "innerHTML"
+      },
+      "day": {
+        "selector": ".wf5dayRight .wf5dayRightDay",
+        "containedIn": "innerHTML"
+      },
+      "temp": {
+        "selector": ".wf5dayRight .wf5dayRightTemp",
+        "containedIn": "innerHTML"
+      },
+      "cond": {
+        "selector": ".wf5dayRight .wf5dayRightCond",
+        "containedIn": "innerHTML"
+      },
+      "wind": {
+        "selector": ".wf5dayRight .wf5dayRightWind",
+        "containedIn": "innerHTML"
+      },
+      "rainProb": {
+        "selector": ".wf5dayRight .wf5dayRightRainValue",
+        "containedIn": "innerHTML"
+      },
+      "cloudy": {
+        "selector": ".wf5dayRight .wf5dayRightCloudinessValue",
+        "containedIn": "innerHTML"
+      }
+    }
   }
 }

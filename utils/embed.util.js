@@ -24,7 +24,22 @@ const aniChar = (aniCharData) => {
   return { embed };
 };
 
+const forecast = (forecastData) => {
+  const embed = new Discord.RichEmbed()
+    .addBlankField()
+    .addField('Температура:', forecastData.temp, true)
+    .addField('Време:', forecastData.cond, true)
+    .addField('Вероятност за дъжд:', forecastData.rainProb, true)
+    .addField('Облачност:', forecastData.cloudy, true)
+    .addField('Вятър:', forecastData.wind, true)
+    .setThumbnail(forecastData.img)
+    .setTitle(`${forecastData.city} - ${forecastData.day} - ${forecastData.date}`);
+
+  return { embed };
+};
+
 module.exports = {
   anime,
   aniChar,
+  forecast,
 };
