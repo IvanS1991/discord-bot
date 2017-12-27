@@ -24,6 +24,8 @@ const init = (data) => {
   setInterval(() => {
     http.get('http://kaka-filka-bot.herokuapp.com');
   }, 60000);
+
+  return data;
 };
 
 module.exports = { init };
